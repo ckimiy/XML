@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administratorski panel</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/layout.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/codebook.js"></script>
+  </head>
+  <body>
+    <div id="header">
+	</div>
+    <div id="main_body">
+		<div class="form_el">
+		  <form action="javascript:void(0)" method="post" id="addForm">
+			<input required type="text" placeholder="" name="content" id="content" required /><br />
+			<select id="selectForm">
+			  <option value="katSmestaja">Kategorizacija smestaja</option>
+			  <option value="tipSmestaja">Tip smestaja</option>
+			  <option value="vrDodUsluga">Vrste dodatnih usluga</option>
+			</select>
+			<input type="submit" value="Dodaj" id="addCode"/>
+		  </form>
+		</div>
+		<br><br><br><br><br><br>
+		<h3 class="marginLeft">Kategorizacija smestaja</h3>
+		<div id="list_1"></div>
+		<h3 class="marginLeft">Tip smestaja</h3>
+		<div id="list_2"></div>
+		<h3 class="marginLeft">Vrste dodatnih usluga</h3>
+		<div id="list_3"></div>
+    </div>
+  </body>
+</html>

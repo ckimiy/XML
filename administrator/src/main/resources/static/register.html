@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administratorski panel</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/layout.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/registration.js"></script>
+  </head>
+  <body>
+    <div id="header">
+	</div>
+    <div id="main_body">
+		<div class="form_el">
+		  <form action="javascript:void(0)" method="post" id="registerForm">
+			<input required type="text" placeholder="Korisnicko ime" name="username" id="username" required /><br />
+			<input required type="email" placeholder="Email" name="email" id="email"/><br />
+			<input required type="password" placeholder="Sifra" name="password" id="password" required /><br />
+			<input required type="text" placeholder="Ime" name="name" id="name"/><br />
+			<input required type="text" placeholder="Prezime" name="surname" id="surname"/><br />
+			<input required type="text" placeholder="Drzava" name="country" id="country"/><br />
+			<input required type="text" placeholder="Grad" name="city" id="city"/><br />
+			<input required type="text" placeholder="Ulica" name="street" id="street"/><br />
+			<input required type="number" placeholder="Poslovni maticni broj" name="pmb" id="pmb"/><br />
+			<input type="submit" value="Dodaj" id="register"/>
+		  </form>
+		</div>
+    </div>
+  </body>
+</html>

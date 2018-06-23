@@ -1,0 +1,221 @@
+@import url("font-awesome.min.css");
+@charset "utf-8";
+
+html{overflow-y:scroll; overflow-x:hidden;}
+html, body{margin:0; padding:0; font-size:14px; line-height:1.6em;}
+textarea {
+	resize: none;
+}
+a {
+	text-decoration: none;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.sameLine {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.marginLeft {
+	margin-left: 20px;
+}
+
+
+.textTemplate {
+	border-left: 5px solid #2BADD9;
+    background-color: #111111;
+    word-wrap: break-word;
+    color: #b1b1b1;
+    padding: 10px;
+}
+
+.commentTemplate {
+    background-color: #222222;
+    color: #a2bdbb;
+    padding: 10px;
+}
+
+
+/* Fonts
+-----------------------------------------------------------------------------------------------------------*/
+body, input, textarea, select{font-family:Verdana, Geneva, sans-serif;}
+
+/* Top bar
+-----------------------------------------------------------------------------------------------------------*/
+#topbar{font-size:.9rem; text-transform:uppercase;}
+
+#topbar ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#topbar li {
+	float: left;
+	overflow: hidden;
+}
+
+/* move left side of menu to right */
+#topbar li:first-child {
+	margin-left: 40px;
+}
+
+/* move sub-forum and search to right side */
+#topbar li:nth-last-child(-n+2) {
+	margin-right: 40px;
+	float: right;
+}
+
+#topbar a {
+		display: inline-block;
+		text-align: center;
+		padding: 14px 16px;
+}
+
+
+.inlineBlockDiv div {
+	display: inline-block;
+}
+
+
+/* User page
+-----------------------------------------------------------------------------------------------------------------------------*/
+#userPage {
+	width: 70%;
+	margin: auto;
+}
+
+.userBox {
+}
+
+.userBoxLinePart1, .userBoxLinePart2 {
+	padding: 10px;
+	display: inline-block;
+}
+/* form elements
+---------------------------------------------------------------------------------------------------------------------------*/
+.form_el {
+	margin: auto;
+	width: 30%;
+	padding: 10px;
+}
+.form_el input, textarea, select {
+	width: 100%;
+	padding: 10px 20px;
+	margin-top: 20px;
+	border: 1px solid;
+}
+
+.form_el input[type=file] {
+	border: none;
+}
+
+.form_el input[type=submit] {
+	border: none;
+	cursor: hand;
+}
+
+.btn {
+	border: none;
+	cursor: hand;
+	padding: 10px;
+}
+
+/* same size input elements */
+input, select, textarea {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+/* Colors
+-----------------------------------------------------------------------------------------------------------*/
+body {color: #2BADD9; background-color: #191919;}
+a {color: #2BADD9;}
+
+
+/* Top bar */
+#topbar ul {
+	background-color: #222222;
+}
+
+#topbar li a:hover {
+	color: #2BADD9;
+  background-color: #111;
+}
+
+i:hover {
+	color: #2193ba;
+}
+
+/* form elements */
+.form_el input, textarea {
+	color: #222222;
+	border-color: #2BADD9;
+}
+
+.form_el input[type=file] {
+	color: #2BADD9;
+}
+
+.form_el input[type=submit], button {
+	color: #ffffff;
+	background-color: #2BADD9;
+}
+
+.form_el input[type=submit]:hover, button:hover {
+	background-color: #2193ba;
+}
+
+
+.btn {
+	color: #ffffff;
+	background-color: #2BADD9;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #2193ba;
+}
+
+.likeDislike {
+	color: #2BADD9;
+}
+
+.likeDislike i:hover {
+	color: #2193ba;
+}
+
+.topbar_btn {
+	background-color: #2BADD9;
+}
+
+.topbar_btn:hover {
+	background-color: #2193ba;
+}
+
+
+.divBack {
+	background-color: #222222;
+	margin-bottom: 5px;
+}
+
+
+/* User page */
+.userBoxLinePart1 {
+	color: #096f8c;
+	background-color: #222222;
+}
+
+/* Device width
+--------------------------------------------------------------------------------------------*/
+@-ms-viewport{width:device-width;}
+
+/* Max Wrapper Width - Laptop, Desktop etc. */
+@media screen and (min-width:978px){
+	.hoc{max-width:1500px;}
+}
