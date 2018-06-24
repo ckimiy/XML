@@ -1,5 +1,7 @@
 package com.xml.administrator.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xml.administrator.model.Admin;
 import com.xml.administrator.model.Comment;
+import com.xml.administrator.model.TUser;
 import com.xml.administrator.services.CommentService;
 
 @RestController
@@ -18,14 +22,27 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService commentSer;
+	
+	@Autowired
+	private HttpServletRequest request;
 
 	@RequestMapping(value ="/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getAllComments() {
+		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
+		if(tempAdmin == null) {
+			return new ResponseEntity<String>("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
+		}
+		
 		return ResponseEntity.status(200).body(commentSer.getAllDisapprovedComments());
 	}
 	
 	@RequestMapping(value = "/approve/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> approveComment(@PathVariable  Long id) throws Exception {
+		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
+		if(tempAdmin == null) {
+			return new ResponseEntity<String>("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
+		}
+		
 		Comment temp = commentSer.save(id, true);
 		if (temp == null) {
 			return new ResponseEntity<String>("Nije prihvaceno.", HttpStatus.BAD_REQUEST);
@@ -35,6 +52,11 @@ public class CommentController {
 	
 	@RequestMapping(value = "/disapprove/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> disapproveComment(@PathVariable  Long id) throws Exception {
+		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
+		if(tempAdmin == null) {
+			return new ResponseEntity<String>("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
+		}
+		
 		Comment temp = commentSer.delete(id);
 		if (temp == null) {
 			return new ResponseEntity<String>("Nije prihvaceno.", HttpStatus.BAD_REQUEST);

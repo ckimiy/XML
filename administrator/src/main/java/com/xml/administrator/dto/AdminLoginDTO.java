@@ -1,6 +1,6 @@
 package com.xml.administrator.dto;
 
-public class UserLoginDTO {
+public class AdminLoginDTO {
 	
 	private String email;
 	

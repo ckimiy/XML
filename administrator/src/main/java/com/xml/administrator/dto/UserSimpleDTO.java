@@ -7,6 +7,8 @@ public class UserSimpleDTO {
 	private String username;
 	
 	private String email;
+	
+	private boolean blocked;
 
 	public Long getId() {
 		return id;
@@ -32,4 +34,13 @@ public class UserSimpleDTO {
 		this.email = email;
 	}
 
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+	
+	
 }

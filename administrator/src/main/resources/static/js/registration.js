@@ -3,7 +3,6 @@ $(document).ready(function() {
 		var $form = $("#registerForm");
 		var data = getFormData($form);
 		var s = JSON.stringify(data);
-		console.log(s);
 		$.ajax({
 			
 			url: "/agent/register",
@@ -16,7 +15,7 @@ $(document).ready(function() {
 				
 			},
 			error: function(data) {
-				alert(data);
+				alert("Neuspesno.");
 			}
 		
 		});

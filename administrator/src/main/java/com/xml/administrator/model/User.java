@@ -13,6 +13,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,6 +39,16 @@ import javax.xml.bind.annotation.XmlType;
 public class User
     extends TUser implements Serializable
 {
+	@XmlElement(name = "Blocked", required = true)
+    protected boolean blocked;
 
+	public boolean isBlocked() {
+		return blocked;
+	}
 
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+	
+	
 }

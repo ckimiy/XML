@@ -47,4 +47,49 @@ public class UsersService implements UsersServiceInt {
 		return user;
 	}
 
+	@Override
+	public UserSimpleDTO activate(Long id) {
+		User temp = userRepository.findById(id).get();
+		if(temp == null) return null;
+		temp.setBlocked(false);
+		userRepository.save(temp);
+		
+		ModelMapper mapper = new ModelMapper();
+		UserSimpleDTO dto;
+		try {
+			dto = mapper.map(temp, UserSimpleDTO.class);
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			return null;
+		}
+		return dto;
+		
+	}
+	
+	@Override
+	public UserSimpleDTO block(Long id) {
+		User temp = userRepository.findById(id).get();
+		if(temp == null) return null;
+		temp.setBlocked(true);
+		userRepository.save(temp);
+
+		ModelMapper mapper = new ModelMapper();
+		UserSimpleDTO dto;
+		try {
+			dto = mapper.map(temp, UserSimpleDTO.class);
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			return null;
+		}
+		return dto;
+	}
+
+	@Override
+	public User delete(Long id) {
+		User temp = userRepository.findById(id).get();
+		if(temp == null) return null;
+		userRepository.delete(temp);
+		return temp;
+	}
+
 }
