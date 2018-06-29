@@ -10,6 +10,7 @@ $(document).ready(function() {
 			data: s,
 			contentType: "application/json",
 			dataType: "text",
+			headers: createAuthorizationTokenHeader(),
 			success: function(data){
 				alert(data);
 				

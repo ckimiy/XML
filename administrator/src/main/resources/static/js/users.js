@@ -7,6 +7,7 @@ function allUsers() {
 		url : '/users/all',
 		type : 'GET',
 		dataType : 'json',
+		headers: createAuthorizationTokenHeader(),
 		error : function(data) {
 		},
 		success : function(data) {
@@ -41,6 +42,7 @@ function add(element) {
 		  		type: "PUT",
 		  		url: "/users/activate/"+id,
 		  		dataType : 'json',
+		  		headers: createAuthorizationTokenHeader(),
 		  		success: function(data) {
 		  			$("#user-"+id).remove();
 		  			add(data);
@@ -57,6 +59,7 @@ function add(element) {
 		  		type: "PUT",
 		  		url: "/users/block/"+id,
 		  		dataType : 'json',
+		  		headers: createAuthorizationTokenHeader(),
 		  		success: function(data) {
 		  			$("#user-"+id).remove();
 		  			add(data);
@@ -73,6 +76,7 @@ function add(element) {
 		$.ajax({
 	  		type: "DELETE",
 	  		url: "/users/"+id,
+	  		headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			$("#user-"+id).remove();
 	  		},

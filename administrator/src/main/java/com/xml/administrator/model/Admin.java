@@ -39,5 +39,11 @@ public class Admin
     extends TUser implements Serializable
 {
 
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", name="
+				+ name + ", surname=" + surname + ", permissions=" + permissions + "]";
+	}
+
 
 }

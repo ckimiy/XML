@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,22 +29,17 @@ public class UsersController {
 	@Autowired
 	private HttpServletRequest request;
 	
-	@RequestMapping(value ="/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	@GetMapping("/all")
+	@PreAuthorize("hasAuthority('get:users')")
 	public ResponseEntity getAllUsers() {
-		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
-		if(tempAdmin == null) {
-			return new ResponseEntity<String>("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
-		}
 		
 		return ResponseEntity.status(200).body(usersSer.getAllUsers());
 	}
 	
 	@RequestMapping(value = "/activate/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('update:users')")
 	public ResponseEntity<UserSimpleDTO> activateUser(@PathVariable  Long id) throws Exception {
-		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
-		if(tempAdmin == null) {
-			return new ResponseEntity(HttpStatus.UNAUTHORIZED);
-		}
 		
 		UserSimpleDTO temp = usersSer.activate(id);
 		if (temp != null) {
@@ -52,11 +49,8 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/block/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('update:users')")
 	public ResponseEntity<UserSimpleDTO> blockUser(@PathVariable  Long id) throws Exception {
-		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
-		if(tempAdmin == null) {
-			return new ResponseEntity("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
-		}
 		
 		UserSimpleDTO temp = usersSer.block(id);
 		if (temp != null) {
@@ -66,6 +60,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasAuthority('delete:users')")
 	public ResponseEntity<String> deleteObjCategory(@PathVariable  Long id) throws Exception {
 		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
 		if(tempAdmin == null) {

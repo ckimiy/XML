@@ -7,6 +7,7 @@ function allComments() {
 		url : '/comment/all',
 		type : 'GET',
 		dataType : 'json',
+		headers: createAuthorizationTokenHeader(),
 		error : function(data) {
 		},
 		success : function(data) {
@@ -27,6 +28,7 @@ function allComments() {
 						  		type: "PUT",
 						  		url: "/comment/approve/"+id,
 						  		dataType: "text",
+						  		headers: createAuthorizationTokenHeader(),
 						  		success: function(data) {
 						  			$("#comment-"+id).remove();
 						  		},
@@ -41,6 +43,7 @@ function allComments() {
 						  		type: "DELETE",
 						  		url: "/comment/disapprove/"+id,
 						  		dataType: "text",
+						  		headers: createAuthorizationTokenHeader(),
 						  		success: function(data) {
 						  			$("#comment-"+id).remove();
 						  		},

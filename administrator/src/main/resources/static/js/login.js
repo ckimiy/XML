@@ -8,12 +8,13 @@ $(document).ready(function() {
 	  		url: "/admin/login",
 	  		data: s,
 			contentType: "application/json",
-			dataType: 'text',
-	  		success: function(data) {
+	  		success: function(data, status, xhr) {
+                setJwtToken(xhr.getResponseHeader('Authorization'));
 	  			window.location = '/';
 	  		},
 	  		error: function(data) {
 	  			alert("Neuspesno logovanje.");
+	  			console.log(data);
 	  		}
 	  	});
 	});

@@ -19,8 +19,9 @@ function allCodes() {
 		url : objCateURL + '/all',
 		type : 'GET',
 		dataType : 'json',
+		headers: createAuthorizationTokenHeader(),
 		error : function(data) {
-			alert(data)
+			alert("Neuspesno ucitavanje.")
 		},
 		success : function(data) {
 			$("#"+list_1).empty(); // cistimo, ako je bilo vec neceg
@@ -34,8 +35,9 @@ function allCodes() {
 		url : objTypeURL + '/all',
 		type : 'GET',
 		dataType : 'json',
+		headers: createAuthorizationTokenHeader(),
 		error : function(data) {
-			alert(data)
+			alert("Neuspesno ucitavanje.")
 		},
 		success : function(data) {
 			$("#"+list_2).empty(); // cistimo, ako je bilo vec neceg
@@ -49,8 +51,9 @@ function allCodes() {
 		url : serviceURL + '/all',
 		type : 'GET',
 		dataType : 'json',
+		headers: createAuthorizationTokenHeader(),
 		error : function(data) {
-			alert(data)
+			alert("Neuspesno ucitavanje.")
 		},
 		success : function(data) {
 			$("#"+list_3).empty(); // cistimo, ako je bilo vec neceg
@@ -80,6 +83,7 @@ function add(id, content, listName, url) {
 	  		type: "DELETE",
 	  		url: url + "/" +id,
 	  		dataType: "text",
+	  		headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			$("#"+listName+"-"+id).remove();
 	  		},
@@ -124,6 +128,7 @@ function saveEditedCode(id, listName) {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			$("#con-"+listName+"-"+id).text(data.category);
 	  			$("#editFormDiv").remove();
@@ -139,6 +144,7 @@ function saveEditedCode(id, listName) {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			$("#con-"+listName+"-"+id).text(data.type);
 	  			$("#editFormDiv").remove();
@@ -154,6 +160,7 @@ function saveEditedCode(id, listName) {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			$("#con-"+listName+"-"+id).text(data.service);
 	  			$("#editFormDiv").remove();
@@ -179,6 +186,7 @@ function saveCode() {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			add(data.id, data.category, list_1, objCateURL);
 	  		},
@@ -193,6 +201,7 @@ function saveCode() {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			add(data.id, data.type, list_2, objTypeURL);
 	  		},
@@ -207,6 +216,7 @@ function saveCode() {
 	  		data: s,
 			contentType: "application/json",
 			dataType : 'json',
+			headers: createAuthorizationTokenHeader(),
 	  		success: function(data) {
 	  			add(data.id, data.service, list_3, serviceURL);
 	  		},

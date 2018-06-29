@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,12 +29,8 @@ public class AgentController {
 	private AgentService agentSer;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('add:agent')")
 	public ResponseEntity<String> registerUser(@RequestBody AgentDTO agentDTO, HttpServletRequest request) throws Exception {
-		TUser tempAdmin = (Admin)request.getSession().getAttribute("admin");
-		if(tempAdmin == null) {
-			return new ResponseEntity<String>("Niste ulogovani.", HttpStatus.UNAUTHORIZED);
-		}
-		
 		TUser temp = tuserSer.findUserByEmail(agentDTO.getEmail());
 		if (temp == null) {
 			
