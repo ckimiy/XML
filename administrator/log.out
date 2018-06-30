@@ -1,0 +1,5 @@
+2018-06-30-https-jsse-nio-4444-exec-9--INFO -com.xml.administrator.controllers.UsersController:Administrator sa mail-om admin@admin.com je blokirao korisnika korisnik sa id = 2
+2018-06-30-https-jsse-nio-4444-exec-1--INFO -com.xml.administrator.controllers.UsersController:Administrator sa mail-om admin@admin.com je aktivirao korisnika korisnik sa id = 2
+2018-06-30-https-jsse-nio-4444-exec-8--INFO -com.xml.administrator.controllers.CodebookController:Administrator sa mail-om admin@admin.com je dodao kategoriju 3 stars - *** sa id = 3
+2018-06-30-https-jsse-nio-4444-exec-4--INFO -com.xml.administrator.controllers.CodebookController:Administrator sa mail-om admin@admin.com je izbrisao kategoriju 3 stars - *** sa id = 3
+2018-06-30-https-jsse-nio-4444-exec-9--INFO -com.xml.administrator.controllers.AgentController:Administrator sa mail-om admin@admin.com je registrovao agenta: d@d.com.

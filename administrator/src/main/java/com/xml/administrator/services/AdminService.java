@@ -29,7 +29,8 @@ public class AdminService implements AdminServiceInt, UserDetailsService  {
 	@Override
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
 		Admin temp = adminRep.findByEmail(arg0);
-		if(temp == null) throw new UsernameNotFoundException(String.format("No user found with email '%s'.", arg0));
+		System.out.println("temp: "+temp);
+		if(temp == null) return null;
 		else {
 			Set authorities = new HashSet<>();
 			temp.getPermissions().forEach(permission -> {

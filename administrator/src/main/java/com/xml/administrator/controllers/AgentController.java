@@ -47,7 +47,7 @@ public class AgentController {
 			TUser registerUser = agentSer.save(agentDTO);
 			if (registerUser != null) {
 				logger.info("Administrator sa mail-om "
-						+ email + " je registrovao agenta: "+registerUser.getEmail()+".");
+						+ email + " se registrovao na sistem.");
 				return new ResponseEntity<String>("Registrovan.", HttpStatus.CREATED);
 			}
 		}
